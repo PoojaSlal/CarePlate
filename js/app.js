@@ -248,7 +248,7 @@ function remainingText(current, target, unit, pluralUnit = unit) {
   const absDiff = Math.abs(diff);
   const label = absDiff === 1 ? unit : pluralUnit;
 
-  if (diff === 0) return "Target reached 🎉";
+  if (diff === 0) return "⋆.˚𓇼 Target reached ⋆.˚𓇼";
   if (diff < 0) return `${absDiff} ${label} over`;
   return `${diff} ${label} left`;
 }
