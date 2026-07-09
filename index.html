@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Care Plate</title>
+  <link rel="stylesheet" href="css/style.css"></head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="mark">C</div>
+        <div>
+          <h1>Care Plate</h1>
+          <p>Daily diet tracker</p>
+        </div>
+      </div>
+
+      <section class="profile">
+        <label for="partnerName">Tracking for</label>
+        <input id="partnerName" type="text" autocomplete="name" placeholder="name">
+        <p>Saved privately in this browser.</p>
+      </section>
+
+      <section class="targets" aria-label="Daily targets">
+        <div class="target-row">
+          <span>Calories</span>
+          <input id="targetCalories" type="number" min="0" step="50">
+        </div>
+        <div class="target-row">
+          <span>Protein g</span>
+          <input id="targetProtein" type="number" min="0" step="5">
+        </div>
+        <div class="target-row">
+          <span>Carbs g</span>
+          <input id="targetCarbs" type="number" min="0" step="5">
+        </div>
+        <div class="target-row">
+          <span>Fat g</span>
+          <input id="targetFat" type="number" min="0" step="5">
+        </div>
+        <div class="target-row">
+          <span>Fibre g</span>
+          <input id="targetFibre" type="number" min="0" step="5">
+
+        <div class="target-row">
+          <span>Water cups</span>
+          <input id="targetWater" type="number" min="1" max="30" step="1">
+        </div>
+      </section>
+
+      <p class="tiny">Tip: use favorites for meals he repeats often.</p>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h2 id="headline">Today</h2>
+        </div>
+        <div class="date-control" aria-label="Choose day">
+          <button id="prevDay" title="Previous day" aria-label="Previous day">&lsaquo;</button>
+          <input id="entryDate" type="date">
+          <button id="nextDay" title="Next day" aria-label="Next day">&rsaquo;</button>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="summary">
+          <div class="ring" id="calorieRing">
+            <div class="ring-value">
+              <strong id="caloriePercent">0%</strong>
+              <span>calorie goal</span>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><span>Calories</span><strong id="caloriesStat">0kcal</strong></div>
+            <div class="stat"><span>Protein</span><strong id="proteinStat">0g</strong></div>
+            <div class="stat"><span>Carbs</span><strong id="carbsStat">0g</strong></div>
+            <div class="stat"><span>Fibre</span><strong id="fibreStat">0g</strong></div>
+            <div class="stat"><span>Fat</span><strong id="fatStat">0g</strong></div>
+          </div>
+        </div>
+
+        <div class="quick">
+          <h3>Daily check-in</h3>
+          <div class="water">
+            <div>
+              <strong id="waterText">0 / 8 cups</strong>
+              <div class="water-meter" id="waterMeter"><span></span></div>
+            </div>
+            <button class="icon-btn" id="addWater" title="Add one cup" aria-label="Add one cup">+</button>
+          </div>
+          <div class="note-row">
+            <div class="field">
+              <label for="weightInput">Weight</label>
+              <input id="weightInput" type="number" min="0" step=".1" placeholder="kg or lb">
+            </div>
+            <button class="ghost" id="saveWeight">Save</button>
+          </div>
+          <div class="notes">
+            <div class="field">
+              <label for="dailyNotes">Notes</label>
+              <textarea id="dailyNotes" placeholder="Energy, cravings, digestion, workout..."></textarea>
+            </div>
+            <button class="ghost" id="saveNotes">Save notes</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h3>Add meal</h3>
+          <form id="mealForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="mealType">Meal</label>
+                <select id="mealType">
+                  <option>Breakfast</option>
+                  <option>Lunch</option>
+                  <option>Dinner</option>
+                  <option>Snack</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="mealName">Food</label>
+                <input id="mealName" type="text" required placeholder="Food item">
+              </div>
+              <div class="field">
+                <label for="calories">Calories</label>
+                <input id="calories" type="number" min="0" step="1" required placeholder="0">
+              </div>
+              <div class="field">
+                <label for="protein">Protein g</label>
+                <input id="protein" type="number" min="0" step="1" placeholder="0">
+              </div>
+              <div class="field">
+                <label for="carbs">Carbs g</label>
+                <input id="carbs" type="number" min="0" step="1" placeholder="0">
+              </div>
+              <div class="field">
+                <label for="fat">Fat g</label>
+                <input id="fat" type="number" min="0" step="1" placeholder="0">
+              </div>
+              <div class="field">
+                <label for="fibre">Fibre (g)</label>
+                <input id="fibre" type="number" min="0" step="1" placeholder="0">
+              </div>
+              <div class="field full">
+                <label for="mealNotes">Meal notes</label>
+                <input id="mealNotes" type="text" placeholder="Homemade, extra curd, low oil...">
+              </div>
+            </div>
+            <button class="primary" type="submit" id="mealSubmit">Add meal</button>
+            <button class="ghost" type="button" id="cancelEdit" style="display:none;">Cancel</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="toolbar">
+            <div class="tabs" id="tabs"></div>
+            <button class="ghost" id="exportDay">Export day</button>
+          </div>
+          <div class="meal-list" id="mealList"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

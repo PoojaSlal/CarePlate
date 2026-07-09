@@ -1,0 +1,217 @@
+v2
+🔐 Login
+☁️ Cloud sync
+📊 Analytics dashboard
+📈 Weight charts
+⭐ Favorite meals
+🌙 Dark mode
+📱 Progressive Web App (installable like an app)
+
+
+```
+CarePlate/
+│
+├── index.html
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── app.js
+│
+└── assets/
+    ├── images/
+    └── icons/
+```
+
+Later, if the project grows, we can split the JavaScript even further:
+
+```
+js/
+│
+├── app.js
+├── storage.js
+├── meals.js
+├── analytics.js
+├── export.js
+└── ui.js
+```
+
+But for now, **one CSS file and one JS file is perfect.**
+
+---
+
+# Step 1 – Create the folders
+
+```
+CarePlate/
+│
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+    └── app.js
+```
+
+---
+
+# Step 2 – Move the CSS
+
+Everything between
+
+```html
+<style>
+```
+
+and
+
+```html
+</style>
+```
+
+goes into
+
+```css
+css/style.css
+```
+
+---
+
+Then replace
+
+```html
+<style>
+    ...
+</style>
+```
+
+with
+
+```html
+<link rel="stylesheet" href="css/style.css">
+```
+
+inside `<head>`.
+
+Your `<head>` becomes:
+
+```html
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Care Plate</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+```
+
+---
+
+# Step 3 – Move the JavaScript
+
+Everything between
+
+```html
+<script>
+```
+
+and
+
+```html
+</script>
+```
+
+goes into
+
+```javascript
+js/app.js
+```
+
+---
+
+Replace it with
+
+```html
+<script src="js/app.js"></script>
+```
+
+just before `</body>`.
+
+Your page ends like this:
+
+```html
+    </main>
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
+```
+
+---
+
+# That's it.
+
+The browser treats it exactly the same.
+
+Nothing changes visually.
+
+Nothing breaks.
+
+But editing becomes **much** easier.
+
+---
+
+## Going forward
+
+From this point onward, every feature I help you build will follow this format:
+
+### 📄 HTML
+
+I'll tell you exactly where to insert or replace HTML in `index.html`.
+
+### 🎨 CSS
+
+I'll tell you exactly what to add to the bottom (or appropriate section) of `css/style.css`.
+
+### ⚙️ JavaScript
+
+I'll tell you exactly what to add or modify in `js/app.js`, including where to place new functions or event listeners.
+
+This way, your project stays organized and maintainable instead of turning into a single massive file.
+
+I also recommend adding clear section comments in both files, such as:
+
+```css
+/* =========================================
+   SIDEBAR
+========================================= */
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+/* =========================================
+   MEAL CARDS
+========================================= */
+```
+
+and
+
+```javascript
+/* =========================================
+   STORAGE
+========================================= */
+
+/* =========================================
+   RENDER FUNCTIONS
+========================================= */
+
+/* =========================================
+   EVENT LISTENERS
+========================================= */
+```
+
+These make it much easier to find and edit code as the project grows.
