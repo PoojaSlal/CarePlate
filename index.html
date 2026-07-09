@@ -73,11 +73,26 @@
             </div>
           </div>
           <div class="stats">
-            <div class="stat"><span>Calories</span><strong id="caloriesStat">0kcal</strong></div>
-            <div class="stat"><span>Protein</span><strong id="proteinStat">0g</strong></div>
-            <div class="stat"><span>Carbs</span><strong id="carbsStat">0g</strong></div>
-            <div class="stat"><span>Fibre</span><strong id="fibreStat">0g</strong></div>
-            <div class="stat"><span>Fat</span><strong id="fatStat">0g</strong></div>
+            <div class="stat"><span>Calories</span>
+                <strong id="caloriesStat">0kcal</strong>
+                <small id="caloriesRemaining">0kcal left</small>
+            </div>
+            <div class="stat"><span>Protein</span>
+                <strong id="proteinStat">0g</strong>
+                <small id="proteinRemaining">0g left</small>
+            </div>
+            <div class="stat"><span>Carbs</span>
+                <strong id="carbsStat">0g</strong>
+                <small id="carbsRemaining">0g left</small>
+            </div>
+            <div class="stat"><span>Fibre</span>
+                <strong id="fibreStat">0g</strong>
+                <small id="fibreRemaining">0g left</small>
+            </div>
+            <div class="stat"><span>Fat</span>
+                <strong id="fatStat">0g</strong>
+                <small id="fatRemaining">0g left</small>
+            </div>
           </div>
         </div>
 
@@ -86,9 +101,13 @@
           <div class="water">
             <div>
               <strong id="waterText">0 / 8 cups</strong>
+              <small id="waterRemaining">8 cups left</small>
               <div class="water-meter" id="waterMeter"><span></span></div>
             </div>
-            <button class="icon-btn" id="addWater" title="Add one cup" aria-label="Add one cup">+</button>
+            <div class="water-actions">
+              <button class="icon-btn" id="removeWater" title="Remove one glass" aria-label="Remove one glass">-</button>
+              <button class="icon-btn" id="addWater" title="Add one cup" aria-label="Add one cup">+</button>
+            </div>
           </div>
           <div class="note-row">
             <div class="field">

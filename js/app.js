@@ -121,6 +121,12 @@ function render() {
     const waterTarget = Math.max(1, targets.water || 1);
     $("waterText").textContent = `${day.water} / ${waterTarget} cups`;
     $("waterMeter").style.setProperty("--water", `${Math.min(100, (day.water / waterTarget) * 100)}%`);
+    setRemaining("caloriesRemaining", totals.calories, targets.calories, "kcal");
+    setRemaining("proteinRemaining", totals.protein, targets.protein, "g");
+    setRemaining("carbsRemaining", totals.carbs, targets.carbs, "g");
+    setRemaining("fatRemaining", totals.fat, targets.fat, "g");
+    setRemaining("fibreRemaining", totals.fibre || 0, targets.fibre || 0, "g");
+    setRemaining("waterRemaining", day.water, waterTarget, "cup", "cups");
     $("headline").textContent = activeDate === todayKey() ? "Today" : formatDate(activeDate);
     $("entryDate").value = activeDate;
     $("weightInput").value = day.weight;
@@ -234,6 +240,26 @@ function cancelEditing() {
 
     render();
 }
+
+function remainingText(current, target, unit, pluralUnit = unit) {
+  const safeCurrent = Number(current) || 0;
+  const safeTarget = Number(target) || 0;
+  const diff = safeTarget - safeCurrent;
+  const absDiff = Math.abs(diff);
+  const label = absDiff === 1 ? unit : pluralUnit;
+
+  if (diff === 0) return "Target reached 🎉";
+  if (diff < 0) return `${absDiff} ${label} over`;
+  return `${diff} ${label} left`;
+}
+
+function setRemaining(id, current, target, unit, pluralUnit = unit) {
+  const element = $(id);
+  if (!element) return;
+
+  element.textContent = remainingText(current, target, unit, pluralUnit);
+}
+
 
 /* ======================================================
    EVENT LISTENERS
@@ -378,6 +404,18 @@ $("exportDay").addEventListener("click", async () => {
     await copyText(text);
     $("exportDay").textContent = "Copied";
     setTimeout(() => $("exportDay").textContent = "Export day", 1300);
+});
+
+$("addWater").addEventListener("click", () => {
+    dayData().water += 1;
+    saveState();
+    render();
+});
+
+$("removeWater").addEventListener("click", () => {
+    dayData().water = Math.max(0, dayData().water - 1);
+    saveState();
+    render();
 });
 
 /* ======================================================

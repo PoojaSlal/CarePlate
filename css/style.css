@@ -293,6 +293,21 @@
       background: var(--blue);
     }
 
+    .water-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .water-actions .icon-btn {
+      width: auto;
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: 750;
+
+
+    } 
+
     .icon-btn, .primary, .ghost, .danger, .edit-btn {
       min-height: 40px;
       border-radius: 8px;
@@ -521,3 +536,11 @@
         justify-content: end;
       }
     }
+.stat small,
+.water small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
